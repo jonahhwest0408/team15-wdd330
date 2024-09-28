@@ -1,6 +1,7 @@
 import ProductData from './ProductData.mjs';
 import ProductList from './ProductList.mjs';
 import ProductDetails from './ProductDetails.mjs';
+import Alert from './Alert.mjs';
 import { getParam } from './utils.mjs';  
 
 const productId = getParam('product');
@@ -14,4 +15,5 @@ if (productId) {
   const element = document.querySelector('.product-list');
   const listing = new ProductList('Tents', dataSource, element);
   listing.init();
+  const Alerts = new Alert();
 }
