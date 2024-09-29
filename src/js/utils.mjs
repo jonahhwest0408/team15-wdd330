@@ -23,10 +23,7 @@ export function renderListWithTemplate(
   position = "afterbegin",
   clear = false
 ) {
-  if (!parentElement) {
-    console.error("Parent element not found!");
-    return;
-  }
+
 
   const htmlStrings = list.map(templateFn);
 
@@ -35,8 +32,8 @@ export function renderListWithTemplate(
   }
 
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
-  
-  console.log(`Rendered ${list.length} items into ${parentElement}`);
+
+
 }
 
 export function setClick(selector, callback) {
