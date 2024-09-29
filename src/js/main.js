@@ -1,5 +1,5 @@
 import ProductData from "./ProductData.mjs";
-import ProductList from "./ProductList.mjs";
+import ProductListing from "./ProductList.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 import { getParam } from "./utils.mjs";
 
@@ -12,6 +12,6 @@ if (productId) {
 } else {
   const dataSource = new ProductData("tents");
   const element = document.querySelector(".product-list");
-  const listing = new ProductList("Tents", dataSource, element);
+  const listing = new ProductListing("Tents", dataSource, element);
   listing.init();
 }

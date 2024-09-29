@@ -13,7 +13,7 @@ function productCardTemplate(product) {
 </li>`;
 }
 
-export default class ProductList {
+export default class ProductListing {
   constructor(category, dataSource, listElement) {
     this.category = category;
     this.dataSource = dataSource;
@@ -26,8 +26,8 @@ export default class ProductList {
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
-  renderList(list) {
-    const htmlStrings = list.map(productCardTemplate);
-    this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-  }
+  // renderList(list) {
+  //   const htmlStrings = list.map(productCardTemplate);
+  //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
+  // }
 }
