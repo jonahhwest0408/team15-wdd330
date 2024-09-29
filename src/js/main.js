@@ -1,8 +1,8 @@
 import ProductData from "./ProductData.mjs";
-import ProductList from "./ProductList.mjs";
+import ProductListing from "./ProductList.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 import Alert from "./Alert.mjs";
-import { getParam } from "./utils.mjs";  
+import { getParam } from "./utils.mjs";
 
 const productId = getParam("product");
 
