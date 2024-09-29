@@ -1,7 +1,7 @@
-import { getLocalStorage, setLocalStorage } from './utils.mjs';
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
-  let discountMessage = '';
+  let discountMessage = "";
   if (product.FinalPrice < product.SuggestedRetailPrice) {
     const discountPercentage = Math.round(
     ((product.SuggestedRetailPrice - product.FinalPrice) / product.SuggestedRetailPrice) * 100
