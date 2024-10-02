@@ -2,7 +2,8 @@ import ProductData from "./ProductData.mjs";
 import ProductListing from "./ProductList.mjs";
 import ProductDetails from "./ProductDetails.mjs";
 import Alert from "./Alert.mjs";
-import { getParam } from "./utils.mjs";
+import { getParam, loadHeaderFooter } from "./utils.mjs";
+
 
 const productId = getParam("product");
 
@@ -17,3 +18,5 @@ if (productId) {
   listing.init();
   const Alerts = new Alert();
 }
+
+loadHeaderFooter();
