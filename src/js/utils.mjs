@@ -36,6 +36,46 @@ export function renderListWithTemplate(
 
 }
 
+export function renderWithTemplate(
+  templateFn,
+  parentElement,
+  data,
+  position = "afterbegin",
+  clear = false,
+  callback = null
+) {
+
+  const htmlString = templateFn(data);
+
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+
+  parentElement.insertAdjacentHTML(position, htmlString);
+
+  if (callback) {
+    callback(data);
+  }
+
+}
+
+export async function loadHeaderFooter() {
+  const header = await loadTemplate("header");
+  const footer = await loadTemplate("footer");
+  const headerElement = qs("#main-header");
+  const footerElement = qs("#main-footer");
+  console.log(header);
+  renderWithTemplate((data) => data, headerElement, header);
+  renderWithTemplate((data) => data, footerElement, footer);
+}
+
+async function loadTemplate(name) {
+  const path = `../partials/${name}.html`;
+
+  const html = await fetch(path).then(convertToText);
+  return html;
+}
+
 export function setClick(selector, callback) {
   const element = qs(selector);
   if (element) {
@@ -52,6 +92,14 @@ export function setClick(selector, callback) {
 export function convertToJson(res) {
   if (res.ok) {
     return res.json();
+  } else {
+    throw new Error("Bad Response");
+  }
+}
+
+export function convertToText(res) {
+  if (res.ok) {
+    return res.text();
   } else {
     throw new Error("Bad Response");
   }
