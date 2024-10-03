@@ -126,6 +126,44 @@ button:hover {
   max-width: 600px;
   margin: auto;
 }
+
+/* Product Filter */
+.filter-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 250px;
+}
+
+.filter-box label {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.filter-box select {
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.filter-box select:hover {
+  border-color: #888;
+}
+
+.filter-box select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Product List Page */
 .products {
   padding: 0.5em;
 }
@@ -171,6 +209,11 @@ button:hover {
 
 .product-detail img {
   width: 100%;
+}
+
+.product__discount {
+  font-weight: bold;
+  color: red;
 }
 
 /* Start cart list card styles */
@@ -252,6 +295,13 @@ button:hover {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
+  }
+}
+
+@media (max-width: 500px) {
+  .divider img {
+    max-width: 80%;
+    margin: 0 auto;
   }
 }
 

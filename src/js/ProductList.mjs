@@ -26,16 +26,48 @@ export default class ProductListing {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
+    this.currentSortOption = 'name'; // Default sort option
   }
+
   async init() {
     const list = await this.dataSource.getData();
+    this.addSortListener();
     this.renderList(list);
   }
+
+  addSortListener() {
+    const sortDropdown = document.getElementById('sort-options');
+    sortDropdown.addEventListener('change', (event) => {
+      this.currentSortOption = event.target.value;
+      this.sortAndRenderList();
+    });
+  }
+
+  sortList(list) {
+    if (this.currentSortOption === 'name') {
+      return list.sort((a, b) => a.Name.localeCompare(b.Name));
+    } else if (this.currentSortOption === 'price') {
+      return list.sort((a, b) => a.FinalPrice - b.FinalPrice);
+    }
+    return list; // Default, return unsorted
+  }
+
+  async sortAndRenderList() {
+    const list = await this.dataSource.getData();
+    const sortedList = this.sortList(list);
+    this.renderList(sortedList);
+  }
+
   renderList(list) {
+    this.listElement.innerHTML = ''; // Clear current list
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
+<<<<<<< HEAD
   // renderList(list) {
   //   const htmlStrings = list.map(productCardTemplate);
   //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
   // }
 }
+=======
+}
+>>>>>>> jw-week3-tasks
