@@ -178,6 +178,34 @@ button:hover {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+.products-statement {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  list-style: none; 
+  padding: 0;
+}
+
+.product-grid li {
+  text-align: center;
+}
+
+.product-grid img {
+  max-width: 100px; 
+  height: 100px; 
+}
+
+.product-grid h2 {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;

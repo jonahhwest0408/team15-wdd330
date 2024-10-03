@@ -10,7 +10,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "src/index.html"),
         cart: resolve(__dirname, "src/cart/index.html"),
-        product: resolve(__dirname, "src/product_pages/index.html")
+        product: resolve(__dirname, "src/product_pages/index.html"),
+        about: resolve(__dirname, "src/about/index.html") //new file W03
       },
     },
   },
