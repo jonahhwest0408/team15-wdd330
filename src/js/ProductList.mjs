@@ -62,12 +62,9 @@ export default class ProductListing {
     this.listElement.innerHTML = ''; // Clear current list
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
-<<<<<<< HEAD
   // renderList(list) {
   //   const htmlStrings = list.map(productCardTemplate);
   //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
   // }
 }
-=======
-}
->>>>>>> jw-week3-tasks
+
