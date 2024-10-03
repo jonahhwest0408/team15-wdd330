@@ -1,6 +1,16 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
+  // Calculate discount if applicable
+  let discountMessage = "";
+  let originalPrice = "";
+  if (product.SuggestedRetailPrice > product.FinalPrice) {
+    const discountAmount = (product.SuggestedRetailPrice - product.FinalPrice).toFixed(2);
+    discountMessage = `<p class="product__discount" style="color: red;">Save $${discountAmount}</p>`;
+    originalPrice = `<p class="product__original-price" style="text-decoration: line-through; color: gray;">$${product.SuggestedRetailPrice}</p>`;
+  }
+
+
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
@@ -9,6 +19,7 @@ function productDetailsTemplate(product) {
       alt="${product.NameWithoutBrand}"
     />
     <p class="product-card__price">$${product.FinalPrice}</p>
+    ${discountMessage}
     <p class="product__color">${product.Colors[0].ColorName}</p>
     <p class="product__description">
     ${product.DescriptionHtmlSimple}
