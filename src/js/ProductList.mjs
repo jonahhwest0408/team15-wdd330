@@ -31,7 +31,7 @@ export default class ProductList {
 
   async init() {
     const list = await this.dataSource.getData(this.category);
-    this.addSortListener(); 
+    this.addSortListener(); //sort filter
     this.renderList(list);
     document.querySelector(".title").innerHTML = this.category;
   }
