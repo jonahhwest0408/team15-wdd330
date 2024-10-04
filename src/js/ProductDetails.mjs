@@ -36,13 +36,18 @@ export default class ProductDetails {
       .addEventListener("click", this.addToCart.bind(this));
   }
   addToCart() {
-    let cartContents = getLocalStorage("so-cart");
-    //check to see if there was anything there
-    if (!cartContents) {
-      cartContents = [];
+    let cartContents = getLocalStorage("so-cart") || [];
+    const existingProduct = cartContents.find(item => item.Id === this.product.Id);
+  
+    if (existingProduct) {
+      existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+      existingProduct.totalPrice = existingProduct.quantity * this.product.FinalPrice;
+    } else {
+      this.product.quantity = 1;
+      this.product.totalPrice = this.product.FinalPrice;
+      cartContents.push(this.product);
     }
-    // then add the current product to the list
-    cartContents.push(this.product);
+  
     setLocalStorage("so-cart", cartContents);
   }
   renderProductDetails(selector) {

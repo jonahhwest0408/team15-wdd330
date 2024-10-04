@@ -2,9 +2,10 @@ import { getLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const totalPrice = item.FinalPrice * item.quantity;
+  const imageUrl = item.Images ? item.Images.PrimarySmall : 'placeholder.jpg';
   return `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
-      <img src="${item.Image}" alt="${item.Name}" />
+      <img src="${imageUrl}" alt="${item.Name}" />
     </a>
     <a href="#">
       <h2 class="card__name">${item.Name}</h2>
