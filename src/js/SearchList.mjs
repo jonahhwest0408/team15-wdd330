@@ -1,18 +1,20 @@
 import { renderListWithTemplate, productCardTemplate } from "./utils.mjs";
 
-export default class ProductList {
-  constructor(category, dataSource, listElement) {
-    this.category = category;
+
+export default class SearchList {
+  constructor(searchTerm, dataSource, listElement) {
+    this.searchTerm = searchTerm;
     this.dataSource = dataSource;
     this.listElement = listElement;
     this.currentSortOption = 'name'; 
   }
 
   async init() {
-    const list = await this.dataSource.getData(this.category);
+    const allList = await this.getAllProducts();
+    this.list = allList.filter((product) => product.Name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     this.addSortListener(); //sort filter
-    this.renderList(list);
-    document.querySelector(".title").innerHTML = this.category;
+    this.renderList(this.list);
+    document.querySelector(".title").innerHTML = this.searchTerm;
   }
 
   addSortListener() {
@@ -33,8 +35,7 @@ export default class ProductList {
   }
 
   async sortAndRenderList() {
-    const list = await this.dataSource.getData(this.category);
-    const sortedList = this.sortList(list);
+    const sortedList = this.sortList(this.list);
     this.renderList(sortedList);
   }
 
@@ -42,9 +43,14 @@ export default class ProductList {
     this.listElement.innerHTML = ''; // Clear current list
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
-  // renderList(list) {
-  //   const htmlStrings = list.map(productCardTemplate);
-  //   this.listElement.insertAdjacentHTML("afterbegin", htmlStrings.join(""));
-  // }
+
+  async getAllProducts() {
+    const tentList = await this.dataSource.getData("tents");
+    const backpackList = await this.dataSource.getData("backpacks");
+    const sleepingBagList = await  this.dataSource.getData("sleeping-bags");
+    const hammockList = await this.dataSource.getData("hammocks");
+    const returnList = tentList.concat(backpackList, sleepingBagList, hammockList);
+    return returnList;
+  }
 }
 

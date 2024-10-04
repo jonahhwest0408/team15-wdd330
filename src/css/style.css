@@ -312,6 +312,19 @@ button:hover {
   font-size: var(--large-font);
 }
 
+header form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+header button {
+  font-size: var(--small-font);
+  padding: .1rem .5rem;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
