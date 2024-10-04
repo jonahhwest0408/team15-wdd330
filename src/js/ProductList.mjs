@@ -26,7 +26,7 @@ export default class ProductList {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
-    this.currentSortOption = 'name'; // Default sort option
+    this.currentSortOption = 'name'; 
   }
 
   async init() {

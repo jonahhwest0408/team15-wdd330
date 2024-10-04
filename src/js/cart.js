@@ -7,12 +7,19 @@ loadHeaderFooter();
 
 function removeItemFromCart(event) {
   const productId = event.target.getAttribute("data-id");
-  let cartItems = getLocalStorage("so-cart") || [];  
-  
-  cartItems = cartItems.filter((item) => item.Id !== productId);
+  let cartItems = getLocalStorage("so-cart") || [];
+
+  const product = cartItems.find(item => item.Id === productId);
+
+  if (product.quantity > 1) {
+    product.quantity -= 1;
+    product.totalPrice = product.quantity * product.FinalPrice;
+  } else {
+    cartItems = cartItems.filter(item => item.Id !== productId);
+  }
 
   setLocalStorage("so-cart", cartItems);
-  cart.renderCartContents();  
+  cart.renderCartContents();
 }
 
 document.querySelector(".product-list").addEventListener("click", (event) => {
