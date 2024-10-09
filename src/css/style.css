@@ -286,7 +286,8 @@ button:hover {
   grid-column: 4;  
   position: relative;
   padding: 0.25em 0.5em;
-  bottom: 15px;
+  bottom: 8px;
+  margin-left: 5px;
   background-color: #525b0f; 
   border: none;      
   font-size: 1em;   
@@ -311,6 +312,10 @@ button:hover {
   border-top: 2px solid var(--primary-color);
   font-size: var(--large-font);
 }
+
+.quantity-input {
+  width: 40px; 
+  text-align: center; 
 
 header form {
   display: flex;
