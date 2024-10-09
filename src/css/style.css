@@ -316,6 +316,18 @@ button:hover {
 .quantity-input {
   width: 40px; 
   text-align: center; 
+
+header form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+header button {
+  font-size: var(--small-font);
+  padding: .1rem .5rem;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 @media screen and (min-width: 500px) {
