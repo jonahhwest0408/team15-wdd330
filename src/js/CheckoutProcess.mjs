@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, alertMessage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs"; 
 
 // convert form data to JSON object
@@ -90,13 +90,40 @@ export default class CheckoutProcess {
   
     console.log("Order data to submit:", order);
   
-    // submit the order
+    // submit order
     const services = new ExternalServices();
+
     try {
-      const response = await services.checkout(order); 
-      console.log("Order response:", response); 
+      const response = await services.checkout(order);
+      console.log("Order response:", response);
+  
+      // clear localStorage
+      localStorage.removeItem(this.key);
+  
+      // redirect to the success page
+      window.location.href = "../checkout/success.html";
+  
     } catch (error) {
-      console.error("Error processing order:", error); 
+      console.error("Error processing order:", error);
+    
+      let errorMessage = "An error occurred during checkout.";
+    
+      if (error.message && typeof error.message === 'object') {
+        console.error("Error object details:", error.message);
+    
+        // display specific errors
+        if (error.message.expiration) {
+          errorMessage = `Invalid expiration date: ${error.message.expiration}`;
+        } else if (error.message.cardNumber) {
+          errorMessage = `Invalid card number: ${error.message.cardNumber}`;
+        } else {
+          errorMessage = JSON.stringify(error.message);
+        }
+      } else if (typeof error.message === 'string') {
+        errorMessage = error.message;
+      }
+    
+      alertMessage(`Order failed: ${errorMessage}`, true);
     }
   }
 }

@@ -16,8 +16,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // submit form and checkout
   const checkoutForm = document.getElementById("checkout-form");
+
   checkoutForm.addEventListener("submit", (event) => {
     event.preventDefault(); 
-    checkout.checkout(checkoutForm); 
+    
+    // validate form
+    const formValid = checkoutForm.checkValidity(); 
+    checkoutForm.reportValidity(); 
+
+    if (formValid) {
+      checkout.checkout(checkoutForm); 
+    } else {
+      console.log("Form validation failed. Please fix the errors and submit again.");
+    }
   });
 });

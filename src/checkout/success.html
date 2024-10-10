@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Success</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <header class="divider" id="main-header"></header>
+
+  <main class="divider">
+    <section class="success-message">
+      <h2>Order Successful!</h2>
+      <p>Thank you for your order. Your items are on the way!</p>
+      <a href="../index.html" class="btn back-home">Back to Home</a>
+      <img src="/images/banner.jpg" alt="image of a high mountain lake" />
+    </section>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <script src="../js/utils.mjs" type="module"></script>
+  <script type="module">
+    import { loadHeaderFooter } from '../js/utils.mjs';
+    loadHeaderFooter();
+  </script>
+</body>
+
+</html>
