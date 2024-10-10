@@ -5,7 +5,7 @@ export default class ProductList {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
-    this.currentSortOption = 'name'; 
+    this.currentSortOption = "name";
   }
 
   async init() {
@@ -16,17 +16,17 @@ export default class ProductList {
   }
 
   addSortListener() {
-    const sortDropdown = document.getElementById('sort-options');
-    sortDropdown.addEventListener('change', (event) => {
+    const sortDropdown = document.getElementById("sort-options");
+    sortDropdown.addEventListener("change", (event) => {
       this.currentSortOption = event.target.value;
       this.sortAndRenderList();
     });
   }
 
   sortList(list) {
-    if (this.currentSortOption === 'name') {
+    if (this.currentSortOption === "name") {
       return list.sort((a, b) => a.Name.localeCompare(b.Name));
-    } else if (this.currentSortOption === 'price') {
+    } else if (this.currentSortOption === "price") {
       return list.sort((a, b) => a.FinalPrice - b.FinalPrice);
     }
     return list;
@@ -39,7 +39,7 @@ export default class ProductList {
   }
 
   renderList(list) {
-    this.listElement.innerHTML = ''; // Clear current list
+    this.listElement.innerHTML = ""; // Clear current list
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
   // renderList(list) {
