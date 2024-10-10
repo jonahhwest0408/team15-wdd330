@@ -1,38 +1,70 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
-  <head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Checkout</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
 
-    <meta charset="UTF-8" />
+<body>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <header class="divider" id="main-header"></header>
 
-    <title>Sleep Outside | Checkout</title>
+  <main class="divider">
+    <section class="checkout">
+      <h2>Review & Place Your Order</h2>
 
-    <link rel="stylesheet" href="css/style.css" />
+      <form id="checkout-form" class="checkout-form">
+        <fieldset>
+          <legend>Customer Information</legend>
+          <label for="fname">First Name<span class="required">*</span></label>
+          <input type="text" id="fname" name="fname" value="John" required>
 
-  </head>
+          <label for="lname">Last Name<span class="required">*</span></label>
+          <input type="text" id="lname" name="lname" value="Doe" required>
 
-  <body>
+          <label for="street">Street Address<span class="required">*</span></label>
+          <input type="text" id="street" name="street" value="123 Main" required>
 
-    <header class="divider" id="main-header">
+          <label for="city">City<span class="required">*</span></label>
+          <input type="text" id="city" name="city" value="Rexburg" required>
 
+          <label for="state">State<span class="required">*</span></label>
+          <input type="text" id="state" name="state" value="ID" required>
 
-    </header>
+          <label for="zip">Zip Code<span class="required">*</span></label>
+          <input type="text" id="zip" name="zip" value="83440" required>
+        </fieldset>
 
-    <main class="divider">
+        <fieldset>
+          <legend>Payment Information</legend>
+          <label for="cardNumber">Credit Card Number<span class="required">*</span></label>
+          <input type="text" id="cardNumber" name="cardNumber" value="1234123412341234" required>
 
-      <section class="products">
+          <label for="expiration">Expiration Date<span class="required">*</span></label>
+          <input type="text" id="expiration" name="expiration" value="12/25" required>
 
-        <h2>Review & Place your Order</h2>
+          <label for="securityCode">Security Code<span class="required">*</span></label>
+          <input type="text" id="securityCode" name="securityCode" value="123" required>
+        </fieldset>
+        
+        <button type="submit" class="form-button">Submit Order</button>
+      </form>
 
+      <section id="order-summary">
+        <h3>Order Summary</h3>
+        <p>Subtotal: $<span id="subtotal">0.00</span></p>
+        <p>Shipping: $<span id="shipping">0.00</span></p>
+        <p>Tax: $<span id="tax">0.00</span></p>
+        <p>Total: $<span id="orderTotal">0.00</span></p>
       </section>
+    </section>
+  </main>
 
-    </main>
-
-    <footer id="main-footer"></footer>
-
-  </body>
+  <footer id="main-footer"></footer>
+  <script src="../js/checkout.js" type="module"></script>
+</body>
 
 </html>
