@@ -1,5 +1,31 @@
 import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.mjs";
 
+// image carousel
+function createImageCarousel(product) {
+  let imagesHtml = `
+    <div class="carousel">
+      <div class="carousel__images">
+        <img src="${product.Images.PrimaryLarge}" alt="${product.NameWithoutBrand}" class="carousel__image active" />
+  `;
+
+  if (product.Images.ExtraImages && product.Images.ExtraImages.length > 0) {
+    product.Images.ExtraImages.forEach((image) => {
+      imagesHtml += `
+        <img src="${image.Src}" alt="${image.Title}" class="carousel__image" />
+      `;
+    });
+  }
+
+  imagesHtml += `
+      </div>
+      <button class="carousel__button prev">❮</button>
+      <button class="carousel__button next">❯</button>
+    </div>
+  `;
+
+  return imagesHtml;
+}
+
 function productDetailsTemplate(product) {
   // Calculate discount if applicable
   let discountMessage = "";
@@ -10,14 +36,11 @@ function productDetailsTemplate(product) {
     originalPrice = `<p class="product__original-price" style="text-decoration: line-through; color: gray;">$${product.SuggestedRetailPrice}</p>`;
   }
 
+  const imageCarousel = createImageCarousel(product);
 
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
     <h2 class="divider">${product.NameWithoutBrand}</h2>
-    <img
-      class="divider"
-      src="${product.Images.PrimaryLarge}"
-      alt="${product.NameWithoutBrand}"
-    />
+    ${imageCarousel}
     <p class="product-card__price">$${product.FinalPrice}</p>
     ${discountMessage}
     <p class="product__color">${product.Colors[0].ColorName}</p>
@@ -45,6 +68,7 @@ export default class ProductDetails {
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
+      this.initCarousel();
   }
   addToCart() {
     let cartContents = getLocalStorage("so-cart") || [];
@@ -69,5 +93,26 @@ export default class ProductDetails {
       "afterBegin",
       productDetailsTemplate(this.product)
     );
+  }
+
+  initCarousel() {
+    const images = document.querySelectorAll(".carousel__image");
+    let currentIndex = 0;
+
+    images.forEach((img, index) => {
+      img.style.display = index === 0 ? "block" : "none"; 
+    });
+
+    document.querySelector(".next").addEventListener("click", () => {
+      images[currentIndex].style.display = "none"; 
+      currentIndex = (currentIndex + 1) % images.length; 
+      images[currentIndex].style.display = "block"; 
+    });
+
+    document.querySelector(".prev").addEventListener("click", () => {
+      images[currentIndex].style.display = "none"; 
+      currentIndex = (currentIndex - 1 + images.length) % images.length; 
+      images[currentIndex].style.display = "block"; 
+    });
   }
 }

@@ -568,6 +568,44 @@ button:hover {
   transition: opacity 0.3s ease-in-out;
 }
 
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.carousel__image {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.carousel__image.active,
+.carousel__image[style*="block"] {
+  display: block;
+  opacity: 1;
+}
+
+.carousel__button {
+  position: absolute;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0px 10px;
+  border-radius: 35px;
+  font-size: 24px;
+}
+
+.carousel__button.prev {
+  left: 10px;
+}
+
+.carousel__button.next {
+  right: 10px;
+}
 
 
 @media screen and (min-width: 500px) {
