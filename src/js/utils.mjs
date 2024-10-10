@@ -44,7 +44,7 @@ document.getElementById("newsletter-form").addEventListener("submit", function(e
   
   if (email) {
     alert(`Thank you for signing up with ${email}!`);
-    document.getElementById("email").value = ''; // Clear the form
+    document.getElementById("email").value = ""; // Clear the form
   } else {
     alert("Please enter a valid email.");
   }
