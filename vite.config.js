@@ -12,7 +12,8 @@ export default defineConfig({
         cart: resolve(__dirname, "src/cart/index.html"),
         product: resolve(__dirname, "src/product_pages/index.html"),
         about: resolve(__dirname, "src/product-listing/index.html"), //new file W03
-        search: resolve(__dirname, "src/search/index.html")
+        search: resolve(__dirname, "src/search/index.html"),
+        checkout: resolve(__dirname, "src/checkout/index.html"),
       },
     },
   },
