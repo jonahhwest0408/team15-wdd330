@@ -296,9 +296,28 @@ button:hover {
   transition: all 0.3s ease;   
 }
 
+.cart-footer .cart-total {
+  font-size: 1em; 
+  font-weight: bold;
+  margin-right: 20px;
+}
+
 .remove-item:hover {
   background-color: #6b7600; 
   transform: scale(1.1); 
+}
+
+.checkout-button {
+  background-color: var(--secondary-color); 
+  color: white; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  text-decoration: none; 
+}
+
+.checkout-button:hover {
+  opacity: 90%;
 }
 
 .hide {
@@ -306,7 +325,9 @@ button:hover {
 }
 
 .cart-footer {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin-top: 20px;
   padding: 10px;
   border-top: 2px solid var(--primary-color);
