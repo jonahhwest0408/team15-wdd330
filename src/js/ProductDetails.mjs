@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   // Calculate discount if applicable
@@ -60,6 +60,8 @@ export default class ProductDetails {
     }
   
     setLocalStorage("so-cart", cartContents);
+
+    alertMessage(`${this.product.NameWithoutBrand} has been added to the cart!`, true);
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);

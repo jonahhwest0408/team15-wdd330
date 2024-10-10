@@ -449,6 +449,79 @@ button:hover {
   margin-left: 4px;
 }
 
+#order-message {
+  display: none; 
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#order-message.success {
+  background-color: green;
+  color: white;
+}
+
+#order-message.error {
+  background-color: red;
+  color: white;
+}
+
+.back-home {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--secondary-color);
+  color: white; 
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 20px 0;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.back-home:hover {
+  opacity: 90%;
+}
+
+.alert {
+  position: relative; 
+  padding: .5rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  width: 50%;
+  border: 1px solid transparent;
+  background-color: var(--secondary-color);
+  color: white; 
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-alert {
+  position: absolute;
+  right: 1rem;
+  background-color: black;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+  padding: 3px 5px;
+}
+
+.close-alert:hover {
+  color: white; 
+}
+
+.alert {
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

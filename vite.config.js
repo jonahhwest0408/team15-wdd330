@@ -14,6 +14,7 @@ export default defineConfig({
         about: resolve(__dirname, "src/product-listing/index.html"), //new file W03
         search: resolve(__dirname, "src/search/index.html"),
         checkout: resolve(__dirname, "src/checkout/index.html"),
+        success: resolve(__dirname, "src/checkout/success.html")
       },
     },
   },

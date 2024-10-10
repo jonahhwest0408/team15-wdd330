@@ -20,10 +20,10 @@
         <fieldset>
           <legend>Customer Information</legend>
           <label for="fname">First Name<span class="required">*</span></label>
-          <input type="text" id="fname" name="fname" value="John" required>
+          <input type="text" id="fname" name="fname" value="John" minlength="2" maxlength="50" required>
 
           <label for="lname">Last Name<span class="required">*</span></label>
-          <input type="text" id="lname" name="lname" value="Doe" required>
+          <input type="text" id="lname" name="lname" value="Doe" minlength="2" maxlength="50" required>
 
           <label for="street">Street Address<span class="required">*</span></label>
           <input type="text" id="street" name="street" value="123 Main" required>
@@ -32,23 +32,25 @@
           <input type="text" id="city" name="city" value="Rexburg" required>
 
           <label for="state">State<span class="required">*</span></label>
-          <input type="text" id="state" name="state" value="ID" required>
+          <input type="text" id="state" name="state" value="ID" minlength="2" maxlength="2" required>
 
           <label for="zip">Zip Code<span class="required">*</span></label>
-          <input type="text" id="zip" name="zip" value="83440" required>
+          <input type="text" id="zip" name="zip" value="83440" pattern="\d{5}" title="Enter a valid 5-digit zip code" required>
         </fieldset>
 
         <fieldset>
           <legend>Payment Information</legend>
           <label for="cardNumber">Credit Card Number<span class="required">*</span></label>
-          <input type="text" id="cardNumber" name="cardNumber" value="1234123412341234" required>
+          <input type="text" id="cardNumber" name="cardNumber" value="1234123412341234" pattern="\d{16}" title="Enter a 16-digit card number without spaces" required>
 
           <label for="expiration">Expiration Date<span class="required">*</span></label>
-          <input type="text" id="expiration" name="expiration" value="12/25" required>
+          <input type="text" id="expiration" name="expiration" value="12/25" pattern="(0[1-9]|1[0-2])\/\d{2}" title="Enter a valid expiration date in MM/YY format" required>
 
           <label for="securityCode">Security Code<span class="required">*</span></label>
-          <input type="text" id="securityCode" name="securityCode" value="123" required>
+          <input type="text" id="securityCode" name="securityCode" value="123" pattern="\d{3}" title="Enter a 3-digit security code" required>
         </fieldset>
+
+        <div id="order-message"></div>
         
         <button type="submit" class="form-button">Submit Order</button>
       </form>
