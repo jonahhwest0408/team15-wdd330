@@ -37,20 +37,6 @@ export function renderListWithTemplate(
 
 }
 
-// JS for newsletter
-document.getElementById("newsletter-form").addEventListener("submit", function(event) {
-  event.preventDefault();
-  const email = document.getElementById("email").value;
-  
-  if (email) {
-    alert(`Thank you for signing up with ${email}!`);
-    document.getElementById("email").value = ""; // Clear the form
-  } else {
-    alert("Please enter a valid email.");
-  }
-});
-
-
 export function renderWithTemplate(
   templateFn,
   parentElement,
