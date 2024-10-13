@@ -17,6 +17,16 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+export function setProductListingBreadcrumb(category, numberOfItems) {
+  let breadcrumb = document.getElementById("breadcrumb");
+  breadcrumb.innerText = `${category.toUpperCase()} (${numberOfItems} items)`;
+}
+
+export function setProductBreadcrumb(category) {
+  let breadcrumb = document.getElementById("breadcrumb");
+  breadcrumb.innerText = `${category.toUpperCase()}`;
+}
+
 export function renderListWithTemplate(
   templateFn,
   parentElement,
@@ -127,20 +137,20 @@ export function convertToText(res) {
 }
 
 export function alertMessage(message, scroll = true) {
-  const alert = document.createElement('div');
-  alert.classList.add('alert');
-  alert.innerHTML =`
+  const alert = document.createElement("div");
+  alert.classList.add("alert");
+  alert.innerHTML = `
   <span>${message}</span>
   <button class="close-alert">&times;</button>
   `;
 
-  alert.addEventListener('click', function(e) {
-    if (e.target.classList.contains('close-alert')) {
-      main.removeChild(alert);  
+  alert.addEventListener("click", function (e) {
+    if (e.target.classList.contains("close-alert")) {
+      main.removeChild(alert);
     }
   });
 
-  const main = document.querySelector('main');
+  const main = document.querySelector("main");
   main.prepend(alert);
 
   if (scroll) {
