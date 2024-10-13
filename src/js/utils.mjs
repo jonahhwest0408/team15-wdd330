@@ -17,6 +17,16 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+export function setProductListingBreadcrumb(category, numberOfItems) {
+  let breadcrumb = document.getElementById("breadcrumb");
+  breadcrumb.innerText = `${category.toUpperCase()} (${numberOfItems} items)`;
+}
+
+export function setProductBreadcrumb(category) {
+  let breadcrumb = document.getElementById("breadcrumb");
+  breadcrumb.innerText = `${category.toUpperCase()}`;
+}
+
 export function renderListWithTemplate(
   templateFn,
   parentElement,

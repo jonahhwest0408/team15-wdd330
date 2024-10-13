@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, alertMessage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage, setProductBreadcrumb } from "./utils.mjs";
 
 // image carousel
 function createImageCarousel(product) {
@@ -68,12 +68,14 @@ export default class ProductDetails {
     document
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
-      this.initCarousel();
+    this.initCarousel();
+    console.log(this.product);
+    setProductBreadcrumb(this.product["Category"]);
   }
   addToCart() {
     let cartContents = getLocalStorage("so-cart") || [];
     const existingProduct = cartContents.find(item => item.Id === this.product.Id);
-  
+
     if (existingProduct) {
       existingProduct.quantity = (existingProduct.quantity || 1) + 1;
       existingProduct.totalPrice = existingProduct.quantity * this.product.FinalPrice;
@@ -82,7 +84,7 @@ export default class ProductDetails {
       this.product.totalPrice = this.product.FinalPrice;
       cartContents.push(this.product);
     }
-  
+
     setLocalStorage("so-cart", cartContents);
 
     alertMessage(`${this.product.NameWithoutBrand} has been added to the cart!`, true);
@@ -100,19 +102,19 @@ export default class ProductDetails {
     let currentIndex = 0;
 
     images.forEach((img, index) => {
-      img.style.display = index === 0 ? "block" : "none"; 
+      img.style.display = index === 0 ? "block" : "none";
     });
 
     document.querySelector(".next").addEventListener("click", () => {
-      images[currentIndex].style.display = "none"; 
-      currentIndex = (currentIndex + 1) % images.length; 
-      images[currentIndex].style.display = "block"; 
+      images[currentIndex].style.display = "none";
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].style.display = "block";
     });
 
     document.querySelector(".prev").addEventListener("click", () => {
-      images[currentIndex].style.display = "none"; 
-      currentIndex = (currentIndex - 1 + images.length) % images.length; 
-      images[currentIndex].style.display = "block"; 
+      images[currentIndex].style.display = "none";
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      images[currentIndex].style.display = "block";
     });
   }
 }

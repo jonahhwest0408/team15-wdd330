@@ -1,4 +1,4 @@
-import { renderListWithTemplate, productCardTemplate } from "./utils.mjs";
+import { renderListWithTemplate, productCardTemplate, setProductListingBreadcrumb } from "./utils.mjs";
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -12,6 +12,7 @@ export default class ProductList {
     const list = await this.dataSource.getData(this.category);
     this.addSortListener(); //sort filter
     this.renderList(list);
+    setProductListingBreadcrumb(this.category, this.listElement.childElementCount)
     document.querySelector(".title").innerHTML = this.category;
   }
 
