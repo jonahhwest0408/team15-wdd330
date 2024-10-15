@@ -18,6 +18,25 @@
   box-sizing: border-box;
 }
 
+@keyframes animate-cart {
+  50% {
+    transform: scale(2);
+    fill: red;
+    /* transform: rotate(360deg); */
+  }
+
+  100% {
+    transform: scale(1);
+    color: black;
+  }
+}
+
+.cart-animation {
+  animation-name: animate-cart;
+  animation-timing-function: linear;
+  animation-duration: 0.2s;
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
