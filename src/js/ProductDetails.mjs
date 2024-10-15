@@ -88,6 +88,9 @@ export default class ProductDetails {
     setLocalStorage("so-cart", cartContents);
 
     alertMessage(`${this.product.NameWithoutBrand} has been added to the cart!`, true);
+    let cartSvg = document.querySelector(".cart svg");
+    cartSvg.addEventListener("animationend", () => { cartSvg.classList.remove("cart-animation"); });
+    cartSvg.classList.add("cart-animation");
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
